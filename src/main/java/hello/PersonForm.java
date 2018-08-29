@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class PersonForm {
 
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min=0, max=180)
     private String person;
 
      @Id
