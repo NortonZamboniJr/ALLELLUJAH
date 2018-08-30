@@ -19,14 +19,17 @@ public class WebController {
 
 	@GetMapping("/")
 	public String listAll(Model model, PersonForm personForm) {
-		model.addAttribute("personList", this.repository.findAll());
+		
+		
+			
+		model.addAttribute("personList", this.repository.findAllByOrderByIdDesc());
 
 		return "form";
 	}
 
 	@PostMapping("/")
 	public String addPerson(@ModelAttribute(name="personForm") PersonForm personForm) {
-
+		
 		this.repository.save(personForm);
 
 		return "redirect:/";
