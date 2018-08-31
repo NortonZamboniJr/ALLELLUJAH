@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.LinkedList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,17 +22,25 @@ public class WebController {
 	public String listAll(Model model, PersonForm personForm) {
 		
 		
-			
+	
 		model.addAttribute("personList", this.repository.findAllByOrderByIdDesc());
 
 		return "form";
 	}
 
 	@PostMapping("/")
-	public String addPerson(@ModelAttribute(name="personForm") PersonForm personForm) {
+	public String addPerson(@ModelAttribute(name="personForm") PersonForm personForm, Model model) {
 		
-		this.repository.save(personForm);
-
+		if(!personForm.getPerson().trim().equals(""))
+		{
+			this.repository.save(personForm);
+		}
+		
+		else
+		{
+		    model.addAttribute("emptyError", true);	
+		}
+		
 		return "redirect:/";
 	}
 }

@@ -17,13 +17,13 @@
 			<button class="button" style="background-color:blue;color:white;width:100px;height:35px;font-size:21px;margin-left:55px;margin-top:10px;" ID="btnSubmit" name="btnSubmit" >Rateewt</button>
 		</form>
 		
-		
 		<center><table cellspacing="50" class="table" style="margin-left:0px;magin-top:100px">		</center>
 			<tbody>
 				<tr th:if="${personList.empty}">
 	            	<td colspan="2"> <h1> Ninguém uottitwt por enquanto :/ <h1> </td>
 	        	</tr>
-	        	<tr th:each="t : ${personList}">
+				<p th:if="${emptyError}">Seu tweet deve ter mais que um dígito.</p>
+	        	<tr th:each="t : ${personList}">  <!-- personlist = tweetlist -->
 	            	<td><span th:text="${t.person}"> Tweets </span></td>
 	        	</tr>	        	 
 			</tbody>
