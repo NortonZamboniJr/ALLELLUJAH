@@ -22,7 +22,7 @@ public class WebController {
 	public String listAll(Model model, PersonForm personForm) {
 		
 		
-	
+		 model.addAttribute("emptyError", false);	
 		model.addAttribute("personList", this.repository.findAllByOrderByIdDesc());
 
 		return "form";
@@ -39,6 +39,7 @@ public class WebController {
 		else
 		{
 		    model.addAttribute("emptyError", true);	
+			
 		}
 		
 		return "redirect:/";

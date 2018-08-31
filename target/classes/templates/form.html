@@ -1,18 +1,33 @@
 <!DOCTYPE HTML>
 <HTML>
+	<head>
+	</head>
+	<body onload="onload();">
 	<h1> <center> Rettiwt Hallelujah </center> </h1>
+	
+	<!-- <p th:unless="${emptyError}">Seu tweet deve ter mais que um dígito.</p>
+	 -->
+	 
+	 <p th:if="${emptyError}">Seu tweet deve ter mais que um dígito.</p>
+	 
 	<br>
-	<img style="margin-left:900px" src="https://i.imgur.com/oU6VuC4.png"/>
+	<img style="margin-left:900px" src="https://i.imgur.com/1lO4tys.png"/>
 	<br> 
 	<form action="#" method="post" th:action="@{/}" th:object="${personForm}" >
 		
+			
+		<script>
+			this.onload = onload;
+			function onload() {
+				var input = document.getElementById('txtInput');
+				input.focus();
+			}
+		</script>
 		
 		
 		
 		
-		
-		
-			<input type="text" style="height:120px;width:60;font-size:14pt;" th:field="*{person}" />
+			<input id="txtInput" placeholder="Pensando sobre o que?" type="text" style="height:120px;width:60;font-size:14pt;" th:field="*{person}" />
 			<br>
 			<button class="button" style="background-color:blue;color:white;width:100px;height:35px;font-size:21px;margin-left:55px;margin-top:10px;" ID="btnSubmit" name="btnSubmit" >Rateewt</button>
 		</form>
@@ -22,12 +37,12 @@
 				<tr th:if="${personList.empty}">
 	            	<td colspan="2"> <h1> Ninguém uottitwt por enquanto :/ <h1> </td>
 	        	</tr>
-				<p th:if="${emptyError}">Seu tweet deve ter mais que um dígito.</p>
+				
 	        	<tr th:each="t : ${personList}">  <!-- personlist = tweetlist -->
 	            	<td><span th:text="${t.person}"> Tweets </span></td>
 	        	</tr>	        	 
 			</tbody>
 		</table>
-	
+	</body>
 	
 </HTML>   
